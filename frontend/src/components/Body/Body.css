@@ -1,11 +1,14 @@
 .site-navigation {
   display: flex;
+  margin: 0 auto;
+  margin-top: 1em;
+  border-radius: 100em;
   justify-content: space-between;
   padding-top: 1.2rem;
   padding-bottom: 1rem;
-  background-color: #e1f1ed;
+  background-image: url("/2150763636.jpg");
   border-bottom: 1px solid #e9ecef;
-  width: 100%;
+  width: 60%;
   height: 3em;
   margin-bottom: 2em;
 }
@@ -52,5 +55,8 @@ li {
 
 li a {
   text-decoration: none;
-  color: #495057;
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.805);
+  padding: 0.5rem 0.5em;
+  border-radius: 100em;
 }

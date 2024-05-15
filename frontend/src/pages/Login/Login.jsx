@@ -1,8 +1,8 @@
-import "./Login.css";
 import { useRef, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { UserContext } from "../../model/utils/context/UserContext";
+
+import "./Login.css";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -41,7 +41,10 @@ export default function Login() {
       })
       .catch((e) => {
         console.error(e);
-        setValidation("Error, email or password incorrect");
+        setValidation("Email ou mot de passe incorrect");
+        setTimeout(() => {
+          setValidation("");
+        }, 4000);
       });
 
     resetAll();
@@ -49,54 +52,28 @@ export default function Login() {
 
   return (
     <>
-      <h1>Login</h1>
+      <div className="login-page">
+        <form
+          ref={formRef}
+          onSubmit={handleForm}
+        >
+          <div class="card">
+            <a class="singup">Se connecter</a>
+            <div class="inputBox1">
+              <input type="text" ref={addInputs} name="email" required />
+              <span class="user">Email</span>
+            </div>
 
-      <form
-        className="form card"
-        ref={formRef}
-        onSubmit={handleForm}
-        id="login-form"
-      >
-        <div className="card_header">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
-          >
-            <path fill="none" d="M0 0h24v24H0z"></path>
-            <path
-              fill="currentColor"
-              d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4-5 4v-3H2v-2h8z"
-            ></path>
-          </svg>
-          <h1 className="form_heading">Connexion</h1>
-        </div>
-        <div className="field">
-          <label htmlFor="email">Email</label>
-          <input
-            ref={addInputs}
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Email"
-          />
-        </div>
-        <div className="field">
-          <label htmlFor="password">Password</label>
-          <input
-            ref={addInputs}
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Password"
-          />
-        </div>
-        {validation !== "" && <p>{validation}</p>}
-        <div className="field">
-          <button type="submit">S&apos;identifier</button>
-        </div>
-      </form>
+            <div class="inputBox">
+              <input type="password" ref={addInputs} name="password" required />
+              <span>Mot de passe</span>
+            </div>
+
+            <div class="validation">{validation}</div>
+            <button class="enter">Entrer</button>
+          </div>
+        </form>
+      </div>
     </>
   );
 }

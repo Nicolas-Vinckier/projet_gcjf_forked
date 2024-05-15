@@ -1,81 +1,135 @@
-#login-form {
+.login-page {
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: stretch;
-  width: 30%;
-  height: 30%;
-  margin: 0 auto;
-  border-radius: 1em;
-  background: #e1f1ed;
-  border: 1px solid #2f505941;
-  box-shadow: 10px 10px 64px 0px rgba(180, 180, 207, 0.75);
-  -webkit-box-shadow: 10px 10px 64px 0px rgba(186, 186, 202, 0.75);
-  -moz-box-shadow: 10px 10px 64px 0px rgba(208, 208, 231, 0.75);
-
-  .field {
-    display: flex;
-    padding-bottom: 10px;
-    flex-direction: column;
-    padding: 1em;
-  }
-
-  .card_header {
-    display: flex;
-    align-items: center;
-  }
-
-  .card svg {
-    color: #7878bd;
-    margin-bottom: 20px;
-    margin-right: 5px;
-  }
-
-  .form_heading {
-    font-size: 21px;
-    color: #478d7e;
-  }
-
-  .field {
-    padding-bottom: 10px;
-  }
-
-  input {
-    border-radius: 5px;
-    background-color: #e9e9f7;
-    padding: 5px;
-    color: #478d7e;
-    border: 1px solid #dadaf7;
-  }
-
-  input:focus-visible {
-    outline: 1px solid #aeaed6;
-  }
-
-  input::placeholder {
-    color: #bcbcdf;
-  }
-
-  label {
-    color: #478d7e;
-    font-size: 14px;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  .singup {
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     display: block;
-    padding-bottom: 4px;
-    font-weight: 700;
+    font-weight: bold;
+    font-size: x-large;
+    margin-top: 1.5em;
+    
   }
 
-  button {
-    background-color: #2f5059 !important;
-    margin-top: 10px;
-    font-size: 14px;
-    padding: 7px 12px;
-    height: auto;
-    font-weight: 500;
-    color: white;
+  .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 350px;
+    width: 300px;
+    flex-direction: column;
+    gap: 35px;
+    background: #e3e3e3;
+    box-shadow: 16px 16px 32px #c8c8c8,
+      -16px -16px 32px #fefefe;
+    border-radius: 8px;
+    clip-path: border-box;
+  }
+
+  .inputBox,
+  .inputBox1 {
+    position: relative;
+    width: 250px;
+  }
+
+  .inputBox input,
+  .inputBox1 input {
+    width: 100%;
+    padding: 10px;
+    outline: none;
     border: none;
+    color: #000;
+    font-size: 1em;
+    background: transparent;
+    border-left: 2px solid #000;
+    border-bottom: 2px solid #000;
+    transition: 0.1s;
+    border-bottom-left-radius: 8px;
   }
 
-  button:hover {
-    background-color: #4bbfaa !important;
+  .inputBox span,
+  .inputBox1 span {
+    margin-top: 5px;
+    position: absolute;
+    left: 0;
+    transform: translateY(-4em);
+    margin-left: 10px;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 12px;
+    color: #000;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 3px;
+    border-radius: 8px;
   }
+
+  .inputBox input:valid~span,
+  .inputBox input:focus~span {
+    transform: translateX(113px) translateY(-15px);
+    font-size: 0.8em;
+    padding: 5px 10px;
+    background: #000;
+    letter-spacing: 0.2em;
+    color: #fff;
+    border: 2px;
+  }
+
+  .inputBox1 input:valid~span,
+  .inputBox1 input:focus~span {
+    transform: translateX(156px) translateY(-15px);
+    font-size: 0.8em;
+    padding: 5px 10px;
+    background: #000;
+    letter-spacing: 0.2em;
+    color: #fff;
+    border: 2px;
+  }
+
+  .inputBox input:valid,
+  .inputBox input:focus,
+  .inputBox1 input:valid,
+  .inputBox1 input:focus {
+    border: 2px solid #000;
+    border-radius: 8px;
+  }
+
+  .enter {
+    height: 45px;
+    width: 100px;
+    border-radius: 5px;
+    border: 2px solid #000;
+    cursor: pointer;
+    background-color: transparent;
+    transition: 0.5s;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 3em;
+  }
+
+  .enter:hover {
+    background-color: rgb(0, 0, 0);
+    color: white;
+  }
+
+  .validation {
+    color: red;
+  }
+}
+
+.login-page::after {
+  content: "";
+  background-image: url("/2150763636.jpg");
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  filter: blur(10px);
+  clip-path: border-box;
+  z-index: -1; 
 }

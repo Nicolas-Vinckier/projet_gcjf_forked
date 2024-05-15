@@ -34,6 +34,14 @@ function Nav({ logOut, role }) {
     navigate("/");
   }
 
+  // Vérifier si l'utilisateur est connecté
+  const isLogged = localStorage.getItem("role");
+
+  // Si l'utilisateur n'est pas connecté, ne rien retourner
+  if (!isLogged) {
+    return null;
+  }
+
   return (
     <nav className="site-navigation">
       <div className="navbar-logo">
