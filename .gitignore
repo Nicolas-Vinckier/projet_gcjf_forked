@@ -1,4 +1,8 @@
 ### --------------------------------------------- FRONTEND
+# Clé certificat SSL
+frontend/certificate.crt
+frontend/private.key
+
 # dependencies
 frontend/node_modules
 frontend/.pnp
