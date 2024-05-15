@@ -57,20 +57,20 @@ export default function Login() {
           ref={formRef}
           onSubmit={handleForm}
         >
-          <div class="card">
-            <a class="singup">Se connecter</a>
-            <div class="inputBox1">
+          <div className="card">
+            <a className="singup">Se connecter</a>
+            <div className="inputBox1">
               <input type="text" ref={addInputs} name="email" required />
-              <span class="user">Email</span>
+              <span className="user">Email</span>
             </div>
 
-            <div class="inputBox">
+            <div className="inputBox">
               <input type="password" ref={addInputs} name="password" required />
               <span>Mot de passe</span>
             </div>
 
-            <div class="validation">{validation}</div>
-            <button class="enter">Entrer</button>
+            <div className="validation">{validation}</div>
+            <button className="enter">Entrer</button>
           </div>
         </form>
       </div>
