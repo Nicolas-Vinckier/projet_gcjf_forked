@@ -1,3 +1,7 @@
+/**
+ * Composant principal contenant la navigation et les routes de l'application.
+ * @returns {JSX.Element} Le contenu principal de l'application.
+ */
 import {
   BrowserRouter as Router,
   Routes,
@@ -26,9 +30,18 @@ import TraitementDemande from "../../pages/Manager/TraitementDemande";
 import ValideeAbs from "../../pages/Manager/ValideeAbs";
 import RejeteeAbs from "../../pages/Manager/RejeteeAbs";
 
+/**
+ * Composant de la barre de navigation.
+ * @param {Object} props - Les propriétés du composant.
+ * @returns {JSX.Element} La barre de navigation.
+ */
 function Nav({ logOut, role }) {
   const navigate = useNavigate();
 
+  /**
+   * Gère la déconnexion de l'utilisateur.
+   * @async
+   */
   async function handleLogout() {
     await logOut();
     navigate("/");
@@ -90,6 +103,10 @@ function Nav({ logOut, role }) {
   );
 }
 
+/**
+ * Composant principal de l'application.
+ * @returns {JSX.Element} Le contenu principal de l'application.
+ */
 export default function Body() {
   const { role, logOut } = useContext(UserContext);
 
