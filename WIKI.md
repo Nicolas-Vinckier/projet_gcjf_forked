@@ -13,7 +13,7 @@
 - Les classes sont nommées en anglais et en CamelCase
 - En cas d'implémentation de classe, on ajoute `Impl` à la fin du nom de la classe
 
-### Exemple :
+### Exemple
 
 Pour la classe 'Utilisateur', on aura `User` suivi du type de classe (Controller, Service, Repository)
 Exemple : `UserController`
