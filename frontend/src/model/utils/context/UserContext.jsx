@@ -7,8 +7,10 @@ export default function UserContextProvider({ children }) {
   const [role, setRole] = useState();
 
   useEffect(() => {
-    if(localStorage.getItem("role")){ setRole(localStorage.getItem("role"))}
-  }, [])
+    if (localStorage.getItem("role")) {
+      setRole(localStorage.getItem("role"));
+    }
+  }, []);
 
   async function postData(url = "", donnees = {}) {
     let options = {
@@ -59,13 +61,13 @@ export default function UserContextProvider({ children }) {
       credentials: "include",
     }).then((response) => response.json());
     setRole(res.role);
-    localStorage.setItem("role", res.role)
+    localStorage.setItem("role", res.role);
   };
 
   const logOut = async () => {
     const response = await postData("http://localhost:8082/logout");
     if (response.ok) {
-      localStorage.removeItem("role")
+      localStorage.removeItem("role");
       setRole();
       return;
     }

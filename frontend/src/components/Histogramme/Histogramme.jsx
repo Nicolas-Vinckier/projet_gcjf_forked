@@ -19,40 +19,46 @@ ChartJS.register(
   Legend
 );
 
-
 export default function Histogramme({
   selectedService,
   selectedMonth,
   selectedYear,
 }) {
   class Dataset {
-    constructor(label, data){
-      this.label = label
-      this.data = absToList(data)
-      let color = label.toLowerCase().split("").slice(0, 3).map((letter) =>  {
-        let charcode = letter.charCodeAt(0) - 93   
-        return charcode * 9
-      }).join()
+    constructor(label, data) {
+      this.label = label;
+      this.data = absToList(data);
+      let color = label
+        .toLowerCase()
+        .split("")
+        .slice(0, 3)
+        .map((letter) => {
+          let charcode = letter.charCodeAt(0) - 93;
+          return charcode * 9;
+        })
+        .join();
       this.backgroundColor = "rgba(" + color + ", .7)";
       this.borderColor = "rgb(" + color + ")";
-      this.borderWidth = 1
+      this.borderWidth = 1;
     }
-  
-    toObject(){
+
+    toObject() {
       return {
-        label : this.label,
-        data : this.data,
-        backgroundColor : this.backgroundColor,
-        borderColor : this.borderColor,
-        borderWidth : this.borderWidth,
-      }
+        label: this.label,
+        data: this.data,
+        backgroundColor: this.backgroundColor,
+        borderColor: this.borderColor,
+        borderWidth: this.borderWidth,
+      };
     }
   }
   const { loadedData } = useFetchData(
-    `http://localhost:8082/api/absence/service?id=${selectedService}&month=${selectedMonth + 1}&year=${selectedYear}`
+    `http://localhost:8082/api/absence/service?id=${selectedService}&month=${
+      selectedMonth + 1
+    }&year=${selectedYear}`
   );
-  let data = loadedData
-  const daysOfMonth = createLabel(selectedYear, selectedMonth)
+  let data = loadedData;
+  const daysOfMonth = createLabel(selectedYear, selectedMonth);
 
   function absToList(absences) {
     let obj = {};
@@ -73,15 +79,15 @@ export default function Histogramme({
     return Array.from(Object.values(obj));
   }
 
-  if(loadedData){
+  if (loadedData) {
     data = {
       labels: daysOfMonth,
       datasets: loadedData?.map((user) => {
-        return new Dataset(user.firstName, user.absences).toObject()
+        return new Dataset(user.firstName, user.absences).toObject();
       }),
-    }
+    };
   }
-  
+
   function createLabel(year, month) {
     const daysInMonth = new Date(year, month, 0).getDate();
     let tempArr = [];
@@ -101,7 +107,7 @@ export default function Histogramme({
         display: true,
       },
       legend: {
-        position: "bottom"
+        position: "bottom",
       },
     },
     responsive: true,
@@ -116,8 +122,6 @@ export default function Histogramme({
   };
 
   return (
-    <>
-      {!!data?.datasets?.length > 0 && <Bar data={data} options={options} />}
-    </>
+    <>{!!data?.datasets?.length > 0 && <Bar data={data} options={options} />}</>
   );
 }
